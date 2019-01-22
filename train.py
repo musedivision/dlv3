@@ -4,6 +4,7 @@ from fastai.vision import get_image_files
 from fastai.vision import create_cnn, models
 from fastai.vision import ImageDataBunch, imagenet_stats, get_transforms
 import numpy as np
+import torch
 
 def main():
     path = untar_data(URLs.PETS)
@@ -22,4 +23,5 @@ def main():
 
 
 if __name__ == '__main__':
+    print(torch.cuda.is_available())
     main()
