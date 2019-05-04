@@ -6,11 +6,9 @@ from fastai.vision import ImageDataBunch, imagenet_stats, get_transforms
 import numpy as np
 import torch
 
-class catsdogs {
-    def __init__():
-              
-    
-    def createDataLoader(self):
+class Catsdogs(object): 
+    def __init__(self):
+        self.x = "hello"              
         path = untar_data(URLs.PETS)
         path_anno = path/'annotations'
         path_images = path/'images'
@@ -23,10 +21,13 @@ class catsdogs {
         # create data loaderi
         self.data =ImageDataBunch.from_name_re(path, fnames, pat, ds_tfms=get_transforms(), size=224, bs=bs).normalize(imagenet_stats)
     
-    def getModel(self):
-         self.learner = create_cnn(dataloader, models.resnet34, metrics=error_rate)
+        self.learner = create_cnn(self.dataloader, models.resnet34, metrics=error_rate)
 
+    def getLearner(self):
+        """ return fastai Learner Object """ 
+        return self.learner
 
 if __name__ == '__main__':
     print(torch.cuda.is_available())
-    main()
+    model = Catsdogs() 
+    learner = model.getLearner()
